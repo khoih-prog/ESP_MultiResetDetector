@@ -23,7 +23,7 @@
   * [VS Code & PlatformIO](#vs-code--platformio)
 * [HOWTO Usage](#howto-usage)
 * [Examples](#examples)
-  * [ 1. ConfigOnDoubleReset](examples/ConfigOnDoubleReset)
+  * [ 1. ConfigOnMultiReset](examples/ConfigOnMultiReset)
   * [ 2. ConfigOnMRD_ESP32_minimal](examples/ConfigOnMRD_ESP32_minimal)
   * [ 3. ConfigOnMRD_ESP8266_minimal](examples/ConfigOnMRD_ESP8266_minimal)
   * [ 4. minimal](examples/minimal)
@@ -75,7 +75,7 @@
     * [ 3.6 Reset Detected => Reporting 5. Multi Reset Detected](#36-reset-detected--reporting-5-multi-reset-detected)
     * [ 3.7 Timed out => reset to 1](#37-timed-out--reset-to-1)
     * [ 3.8 Reset Detected => Reporting 1](#38-reset-detected--reporting-1)  
-* [Libraries using ESP_MultiResetDetector, ESP_DoubleResetDetector or DoubleResetDetector_Generic library](#libraries-using-esp_multiresetdetector-esp_doubleresetdetector-or-multiresetdetector_generic-library)
+* [Libraries using ESP_MultiResetDetector, ESP_DoubleResetDetector or DoubleResetDetector_Generic library](#libraries-using-esp_multiresetdetector-esp_doubleresetdetector-or-doubleresetdetector_generic-library)
 * [Debug](#debug)
 * [Troubleshooting](#troubleshooting)
 * [Releases](#releases)
@@ -129,7 +129,8 @@ This [**ESP_MultiResetDetector** library](https://github.com/khoih-prog/ESP_Mult
 
 1. [`Arduino IDE 1.8.13+` for Arduino](https://www.arduino.cc/en/Main/Software)
 2. [`ESP32 Core 1.0.4+`](https://github.com/espressif/arduino-esp32) for ESP32-based boards
-3. [`ESP8266 Core 2.7.4+`](https://github.com/esp8266/Arduino) for ESP8266-based boards. SPIFFS is deprecated from ESP8266 core 2.7.1+. 
+3. [`ESP8266 Core 2.7.4+`](https://github.com/esp8266/Arduino) for ESP8266-based boards. SPIFFS is deprecated from ESP8266 core 2.7.1+.
+4. [`LittleFS_esp32 v1.0.5+`](https://github.com/lorol/LITTLEFS) for ESP32-based boards using LittleFS. 
 
 ---
 
@@ -725,7 +726,7 @@ Submit issues to: [ESP_MultiResetDetector issues](https://github.com/khoih-prog/
 
 ### Contributions and thanks
 
-1. Thanks to [kbssa](https://github.com/kbssa) for request enhancement in [Issue 9: Not an issue, but a question](https://github.com/khoih-prog/ESP_DoubleResetDetector/issues/9), leading to this new [ESP_MultiResetDetector Library]((https://github.com/khoih-prog/ESP_MultiResetDetector)
+1. Thanks to [kbssa](https://github.com/kbssa) for request enhancement in [Issue 9: Not an issue, but a question](https://github.com/khoih-prog/ESP_DoubleResetDetector/issues/9), leading to this new [ESP_MultiResetDetector Library](https://github.com/khoih-prog/ESP_MultiResetDetector)
 
 <table>
   <tr>
