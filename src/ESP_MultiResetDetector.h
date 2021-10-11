@@ -11,11 +11,12 @@
 
   Built by Khoi Hoang https://github.com/khoih-prog/ESP_MultiResetDetector
   Licensed under MIT license
-  Version: 1.1.1
+  Version: 1.1.2
 
   Version Modified By   Date      Comments
   ------- -----------  ---------- -----------
   1.1.1   K Hoang      30/12/2020 Initial coding to support Multiple Reset Detection. Sync with ESP_DoubleResetDetector v1.1.1
+  1.1.2   K Hoang      10/10/2021 Update `platform.ini` and `library.json`
 *****************************************************************************************************************************/
 
 #pragma once
@@ -29,7 +30,7 @@
   #include <WProgram.h>
 #endif
 
-#define ESP_MULTI_RESET_DETECTOR_VERSION       "ESP_MultiResetDetector v1.1.1"
+#define ESP_MULTI_RESET_DETECTOR_VERSION       "ESP_MultiResetDetector v1.1.2"
 #define ESP_MULTIRESETDETECTOR_VERSION         ESP_MULTI_RESET_DETECTOR_VERSION
 
 //#define ESP_MRD_USE_EEPROM      false

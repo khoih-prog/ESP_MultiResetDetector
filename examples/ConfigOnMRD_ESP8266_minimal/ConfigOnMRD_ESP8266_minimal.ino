@@ -11,11 +11,6 @@
   
   Built by Khoi Hoang https://github.com/khoih-prog/ESP_MultiResetDetector
   Licensed under MIT license
-  Version: 1.1.1
-
-  Version Modified By   Date      Comments
-  ------- -----------  ---------- -----------
-  1.1.1   K Hoang      30/12/2020 Initial coding to support Multiple Reset Detection. Sync with ESP_DoubleResetDetector v1.1.1
  *****************************************************************************************************************************/
  
 #if defined(ESP8266)

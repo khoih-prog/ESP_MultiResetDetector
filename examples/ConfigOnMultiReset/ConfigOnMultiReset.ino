@@ -11,11 +11,6 @@
   
   Built by Khoi Hoang https://github.com/khoih-prog/ESP_MultiResetDetector
   Licensed under MIT license
-  Version: 1.1.1
-
-  Version Modified By   Date      Comments
-  ------- -----------  ---------- -----------
-  1.1.1   K Hoang      30/12/2020 Initial coding to support Multiple Reset Detection. Sync with ESP_DoubleResetDetector v1.1.1
  *****************************************************************************************************************************/
 /****************************************************************************************************************************
   This example will open a configuration portal when the reset button is pressed twice.
@@ -29,14 +24,14 @@
   a) EEPROM from address 256, size 512 bytes (both configurable)
   b) SPIFFS
   
-  For LittleFS or SPIFFS, file name is "/MRD.dat"
+  For LittleFS or SPIFFS, file name is "/mrd.dat"
   
   So when the device starts up it checks this region of ram for a flag to see if it has been recently reset.
   If so it launches a configuration portal, if not it sets the reset flag. After running for a while this flag is cleared so that
   it will only launch the configuration portal in response to closely spaced resets.
   
   Settings
-  There are two values to be set in the sketch.
+  There are values to be set in the sketch.
   MRD_TIMES   - Number of subsequent resets during MRD_TIMEOUT to activate
   MRD_TIMEOUT - Number of seconds to wait for the second reset. Set to 10 in the example.
   MRD_ADDRESS - The address in ESP8266 RTC RAM/EEPROM address to store the flag. Must not be used in the same sketch
