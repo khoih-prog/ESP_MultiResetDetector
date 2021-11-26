@@ -117,8 +117,10 @@ This [**ESP_MultiResetDetector** library](https://github.com/khoih-prog/ESP_Mult
 ## Prerequisites
 
 1. [`Arduino IDE 1.8.16+`](https://www.arduino.cc/en/Main/Software)
-2. [`ESP32 Core 2.0.0+`](https://github.com/espressif/arduino-esp32) for ESP32-based boards. [![Latest release](https://img.shields.io/github/release/espressif/arduino-esp32.svg)](https://github.com/espressif/arduino-esp32/releases/latest/)
+2. [`ESP32 Core 2.0.1+`](https://github.com/espressif/arduino-esp32) for ESP32-based boards. [![Latest release](https://img.shields.io/github/release/espressif/arduino-esp32.svg)](https://github.com/espressif/arduino-esp32/releases/latest/)
 3. [`ESP8266 Core 3.0.2+`](https://github.com/esp8266/Arduino) for ESP8266-based boards. [![Latest release](https://img.shields.io/github/release/esp8266/Arduino.svg)](https://github.com/esp8266/Arduino/releases/latest/). SPIFFS is deprecated from ESP8266 core 2.7.1+, to use LittleFS.
+
+4. [`LittleFS_esp32 v1.0.6+`](https://github.com/lorol/LITTLEFS) for ESP32-based boards using LittleFS with ESP32 core v1.0.4-. To install, check [![arduino-library-badge](https://www.ardu-badge.com/badge/LittleFS_esp32.svg?)](https://www.ardu-badge.com/LittleFS_esp32). **Notice**: This [`LittleFS_esp32 library`](https://github.com/lorol/LITTLEFS) has been integrated to Arduino [ESP32 core v1.0.6+](https://github.com/espressif/arduino-esp32/tree/master/libraries/LITTLEFS) and you don't need to install it if using ESP32 core v1.0.6+
 
 ---
 
@@ -308,7 +310,7 @@ This is terminal debug output when running [ESP32_FSWebServer_DRD](https://githu
 ```cpp
 Starting ESP32_FSWebServer_DRD with DoubleResetDetect using SPIFFS on ESP32_DEV
 ESP_WiFiManager v1.7.5
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 FS File: /ConfigSW.json, size: 150B
 FS File: /CanadaFlag_1.png, size: 40.25KB
 FS File: /CanadaFlag_2.png, size: 8.12KB
@@ -375,7 +377,7 @@ This is terminal debug output when running [minimal](examples/minimal) on ***ESP
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 /home/kh/Arduino/libraries/LITTLEFS-master/src/lfs.c:1003:error: Corrupted dir pair at {0x0, 0x1}
 E (241) esp_littlefs: mount failed,  (-84)
 E (245) esp_littlefs: Failed to initialize LittleFS
@@ -396,7 +398,7 @@ Saving config file OK
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFE0001
 multiResetDetectorFlag = 0xFFFE0001
 lowerBytes = 0x0001, upperBytes = 0x0001
@@ -411,7 +413,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFD0002
 multiResetDetectorFlag = 0xFFFD0002
 lowerBytes = 0x0002, upperBytes = 0x0002
@@ -426,7 +428,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFC0003
 multiResetDetectorFlag = 0xFFFC0003
 lowerBytes = 0x0003, upperBytes = 0x0003
@@ -441,7 +443,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFB0004
 multiResetDetectorFlag = 0xFFFB0004
 lowerBytes = 0x0004, upperBytes = 0x0004
@@ -456,7 +458,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFA0005
 multiResetDetectorFlag = 0xFFFA0005
 lowerBytes = 0x0005, upperBytes = 0x0005
@@ -470,7 +472,7 @@ Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFB0004
 multiResetDetectorFlag = 0xFFFB0004
 lowerBytes = 0x0004, upperBytes = 0x0004
@@ -489,7 +491,7 @@ Saving config file OK
 ```
 
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFE0001
 multiResetDetectorFlag = 0xFFFE0001
 lowerBytes = 0x0001, upperBytes = 0x0001
@@ -512,7 +514,7 @@ This is terminal debug output when running [minimal](examples/minimal) on ***ESP
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 multiResetDetectorFlag = 0x00000000
 lowerBytes = 0x0000, upperBytes = 0xFFFF
 lowerBytes = 0x0000, upperBytes = 0xFFFF
@@ -527,7 +529,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFE0001
 multiResetDetectorFlag = 0xFFFE0001
 lowerBytes = 0x0001, upperBytes = 0x0001
@@ -542,7 +544,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFD0002
 multiResetDetectorFlag = 0xFFFD0002
 lowerBytes = 0x0002, upperBytes = 0x0002
@@ -557,7 +559,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFC0003
 multiResetDetectorFlag = 0xFFFC0003
 lowerBytes = 0x0003, upperBytes = 0x0003
@@ -572,7 +574,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFB0004
 multiResetDetectorFlag = 0xFFFB0004
 lowerBytes = 0x0004, upperBytes = 0x0004
@@ -586,7 +588,7 @@ Saving config file OK
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFA0005
 multiResetDetectorFlag = 0xFFFA0005
 lowerBytes = 0x0005, upperBytes = 0x0005
@@ -600,7 +602,7 @@ Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFB0004
 multiResetDetectorFlag = 0xFFFB0004
 lowerBytes = 0x0004, upperBytes = 0x0004
@@ -618,7 +620,7 @@ Saving config file OK
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.1.2
+ESP_MultiResetDetector v1.2.0
 LittleFS Flag read = 0xFFFE0001
 multiResetDetectorFlag = 0xFFFE0001
 lowerBytes = 0x0001, upperBytes = 0x0001
