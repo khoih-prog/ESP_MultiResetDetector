@@ -13,6 +13,7 @@
 
 
 * [Changelog](#changelog)
+  * [Releases v1.2.1](#releases-v121)
   * [Releases v1.2.0](#releases-v120)
   * [Releases v1.1.2](#releases-v112)
   * [Releases v1.1.1](#releases-v111)
@@ -21,6 +22,10 @@
 ---
 
 ## Changelog
+
+### Releases v1.2.1
+
+1. Fix compile error for ESP32 core v1.0.5-
 
 ### Releases v1.2.0
 
