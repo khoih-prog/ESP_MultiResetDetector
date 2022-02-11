@@ -639,7 +639,7 @@ No Multi Reset Detected
 
 #### 4. ESPAsync_WiFi using LittleFS on ESP32S3_DEV
 
-This is terminal debug output when running [ESPAsync_WiFi](https://github.com/khoih-prog/ESPAsync_WiFiManager_Lite/tree/master/examples/ESPAsync_WiFi) on  ***ESP32 ESP32S3_DEV.***. Config Portal was requested by MRD to input and save Credentials.
+This is terminal debug output when running [ESPAsync_WiFi](https://github.com/khoih-prog/ESPAsync_WiFiManager_Lite/tree/main/examples/ESPAsync_WiFi) on  ***ESP32 ESP32S3_DEV.***. Config Portal was requested by MRD to input and save Credentials.
 
 
 ```
