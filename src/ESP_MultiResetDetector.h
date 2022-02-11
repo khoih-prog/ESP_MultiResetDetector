@@ -11,7 +11,7 @@
 
   Built by Khoi Hoang https://github.com/khoih-prog/ESP_MultiResetDetector
   Licensed under MIT license
-  Version: 1.2.1
+  Version: 1.3.0
 
   Version Modified By   Date      Comments
   ------- -----------  ---------- -----------
@@ -19,6 +19,7 @@
   1.1.2   K Hoang      10/10/2021 Update `platform.ini` and `library.json`
   1.2.0   K Hoang      26/11/2021 Auto detect ESP32 core and use either built-in LittleFS or LITTLEFS library
   1.2.1   K Hoang      26/11/2021 Fix compile error for ESP32 core v1.0.5-
+  1.3.0   K Hoang      10/02/2022 Add support to new ESP32-S3 
 *****************************************************************************************************************************/
 
 #pragma once
@@ -32,7 +33,16 @@
   #include <WProgram.h>
 #endif
 
-#define ESP_MULTI_RESET_DETECTOR_VERSION       "ESP_MultiResetDetector v1.2.1"
+#ifndef ESP_MULTI_RESET_DETECTOR_VERSION
+  #define ESP_MULTI_RESET_DETECTOR_VERSION             "ESP_MultiResetDetector v1.3.0"
+  
+  #define ESP_MULTI_RESET_DETECTOR_VERSION_MAJOR       1
+  #define ESP_MULTI_RESET_DETECTOR_VERSION_MINOR       3
+  #define ESP_MULTI_RESET_DETECTOR_VERSION_PATCH       0
+
+  #define ESP_MULTI_RESET_DETECTOR_VERSION_INT         1003000
+#endif
+
 #define ESP_MULTIRESETDETECTOR_VERSION         ESP_MULTI_RESET_DETECTOR_VERSION
 
 //#define ESP_MRD_USE_EEPROM      false

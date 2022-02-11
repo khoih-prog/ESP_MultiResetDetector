@@ -1,7 +1,7 @@
 {
   "name": "ESP_MultiResetDetector",
-  "version": "1.2.1",
-  "keywords": "rtc,eeprom,littlefs,spiffs,reset,data,esp32,esp8266,double-reset,multi-reset,detector",
+  "version": "1.3.0",
+  "keywords": "rtc, eeprom, littlefs, spiffs, reset, data, esp32, esp32-c3, esp32-s2, esp32-s3, esp8266, double-reset, multi-reset, detector, double-reset-detector, multi-reset-detector",
   "description": "Library to detect a multi reset within a predetermined time, using RTC Memory, EEPROM, LittleFS or SPIFFS for ESP8266 and ESP32",
   "authors":
   {
