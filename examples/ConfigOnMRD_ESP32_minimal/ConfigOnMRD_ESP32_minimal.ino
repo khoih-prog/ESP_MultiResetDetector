@@ -3,7 +3,7 @@
   For ESP8266 / ESP32 boards
   
   ESP_MultiResetDetector is a library for the ESP8266/Arduino platform
-  to enable trigger configure mode by resetting ESP32 / ESP8266 twice.
+  to enable trigger configure mode by resetting ESP32 / ESP8266 multiple times.
   
   Based on and modified from
   1) DataCute    https://github.com/datacute/MultiResetDetector

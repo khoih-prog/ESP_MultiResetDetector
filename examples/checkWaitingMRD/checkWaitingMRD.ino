@@ -1,5 +1,5 @@
 /****************************************************************************************************************************
-  minimal.ino
+  checkWaitingMRD.ino
   For ESP8266 / ESP32 boards
   
   ESP_MultiResetDetector is a library for the ESP8266/Arduino platform
@@ -19,6 +19,10 @@
 // For ESP8266, You must select one to be true (RTC, EEPROM, LITTLEFS or SPIFFS)
 // Otherwise, library will use default EEPROM storage
 
+// This example demonstrates how to use new function waitingForMRD() to signal the stage of MRD
+// waitingForMRD() returns true if in MRD_TIMEOUT, false when out of MRD_TIMEOUT
+// In this example, LED_BUILTIN will blink in MRD_TIMEOUT period, ON when DR has been detected, OFF otherwise
+
 #ifdef ESP8266
   #define ESP8266_MRD_USE_RTC     false   //true
 #endif
@@ -27,12 +31,13 @@
 #define ESP_MRD_USE_SPIFFS      false
 #define ESP_MRD_USE_EEPROM      false
 
-#define MULTIRESETDETECTOR_DEBUG       true  //false
+// Uncomment to have debug
+//#define MULTIRESETDETECTOR_DEBUG       true
 
 // These definitions must be placed before #include <ESP_MultiResetDetector.h> to be used
 // Otherwise, default values (MRD_TIMES = 3, MRD_TIMEOUT = 10 seconds and MRD_ADDRESS = 0) will be used
 // Number of subsequent resets during MRD_TIMEOUT to activate
-#define MRD_TIMES               5
+#define MRD_TIMES               3
 
 // Number of seconds after reset during which a 
 // subsequent reset will be considered a multi reset.
@@ -63,15 +68,48 @@ MultiResetDetector* mrd;
 
 #endif
 
+bool MRD_Detected = false;
+
+void check_status()
+{
+  static ulong checkstatus_timeout  = 0;
+  static bool LEDState = LED_OFF;
+
+  static ulong current_millis;
+
+#define MRD_CHECK_INTERVAL    500L
+
+  current_millis = millis();
+
+  // If MRD_Detected, don't need to blink, just keep LED_BUILTIN ON
+  if ( !MRD_Detected && ((current_millis > checkstatus_timeout) || (checkstatus_timeout == 0)) )
+  {
+    // If in MRD checking loop, blinking the LED_BUILTIN
+    if ( mrd->waitingForMRD() )
+    {
+      digitalWrite(LED_BUILTIN, LEDState);
+
+      LEDState = !LEDState;    
+    }
+    else
+    {
+      digitalWrite(LED_BUILTIN, LED_OFF);
+    }
+    
+    checkstatus_timeout = current_millis + MRD_CHECK_INTERVAL;
+  }
+}
+
 void setup()
 {
   pinMode(LED_BUILTIN, OUTPUT);
   
   Serial.begin(115200);
-  while (!Serial); 
+  while (!Serial);
+
   delay(200);
-  
-  Serial.print(F("\nStarting ESP_MultiResetDetector minimal on ")); Serial.print(ARDUINO_BOARD);
+
+  Serial.print("\nStarting checkWaitingMRD on"); Serial.println(ARDUINO_BOARD);
 
 #if ESP_MRD_USE_LITTLEFS
   Serial.println(F(" using LittleFS"));
@@ -82,27 +120,29 @@ void setup()
 #endif
   
   Serial.println(ESP_MULTI_RESET_DETECTOR_VERSION);
-  
+   
   mrd = new MultiResetDetector(MRD_TIMEOUT, MRD_ADDRESS);
 
   if (mrd->detectMultiReset()) 
   {
     Serial.println("Multi Reset Detected");
     digitalWrite(LED_BUILTIN, LED_ON);
+    MRD_Detected = true;
   } 
   else 
   {
     Serial.println("No Multi Reset Detected");
     digitalWrite(LED_BUILTIN, LED_OFF);
   }
-
 }
 
 void loop()
 {
-  // Call the multi reset detector loop method every so often,
+  // Call the double reset detector loop method every so often,
   // so that it can recognise when the timeout expires.
   // You can also call mrd.stop() when you wish to no longer
-  // consider the next reset as a multi reset.
+  // consider the next reset as a double reset.
   mrd->loop();
+
+  check_status();
 }
