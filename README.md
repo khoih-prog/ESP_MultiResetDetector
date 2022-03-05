@@ -7,7 +7,8 @@
 [![GitHub issues](https://img.shields.io/github/issues/khoih-prog/ESP_MultiResetDetector.svg)](http://github.com/khoih-prog/ESP_MultiResetDetector/issues)
 
 
-<a href="https://www.buymeacoffee.com/khoihprog6" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: 181px !important;" ></a>
+<a href="https://www.buymeacoffee.com/khoihprog6" title="Donate to my libraries using BuyMeACoffee"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Donate to my libraries using BuyMeACoffee" style="height: 50px !important;width: 181px !important;" ></a>
+<a href="https://www.buymeacoffee.com/khoihprog6" title="Donate to my libraries using BuyMeACoffee"><img src="https://img.shields.io/badge/buy%20me%20a%20coffee-donate-orange.svg?logo=buy-me-a-coffee&logoColor=FFDD00" style="height: 20px !important;width: 200px !important;" ></a>
 
 ---
 ---
@@ -29,6 +30,7 @@
   * [ 2. ConfigOnMRD_ESP32_minimal](examples/ConfigOnMRD_ESP32_minimal)
   * [ 3. ConfigOnMRD_ESP8266_minimal](examples/ConfigOnMRD_ESP8266_minimal)
   * [ 4. minimal](examples/minimal)
+  * [ 5. checkWaitingMRD](examples/checkWaitingMRD) **New**
  * [Examples from other libraries](#examples-from-other-libraries)
   * [ 1. ESP_WiFiManager Library](https://github.com/khoih-prog/ESP_WiFiManager)
     * [ 1. ConfigOnDoubleReset](https://github.com/khoih-prog/ESP_WiFiManager/tree/master/examples/ConfigOnDoubleReset)
@@ -57,6 +59,7 @@
     * [ 6. Blynk_Async_ESP32_BT_WF](https://github.com/khoih-prog/Blynk_Async_ESP32_BT_WF)
     * [ 7. Blynk_Async_GSM_Manager](https://github.com/khoih-prog/Blynk_Async_GSM_Manager)
     * [ 8. Ethernet_Manager](https://github.com/khoih-prog/Ethernet_Manager)
+* [Example checkWaitingMRD](#Example-checkWaitingMRD)
 * [Debug Terminal Output Samples](#debug-terminal-output-samples)
   * [1. ESP32_FSWebServer_DRD on ESP32_DEV](#1-esp32_fswebserver_drd-on-esp32_dev)
   * [2. minimal on ESP32_DEV](#2-minimal-on-esp32_dev)
@@ -302,6 +305,15 @@ and there are many more.
 * [ 7. Blynk_Async_GSM_Manager](https://github.com/khoih-prog/Blynk_Async_GSM_Manager)
 * [ 8. Ethernet_Manager](https://github.com/khoih-prog/Ethernet_Manager)
 
+
+---
+---
+
+### Example [checkWaitingMRD](examples/checkWaitingMRD)
+
+https://github.com/khoih-prog/ESP_MultiResetDetector/blob/390a11e842b689ab3277dc42c617344416aaa559/examples/checkWaitingMRD/checkWaitingMRD.ino#L22-L148
+
+
 ---
 ---
 
@@ -313,8 +325,8 @@ This is terminal debug output when running [ESP32_FSWebServer_DRD](https://githu
 
 ```cpp
 Starting ESP32_FSWebServer_DRD with DoubleResetDetect using SPIFFS on ESP32_DEV
-ESP_WiFiManager v1.9.0
-ESP_MultiResetDetector v1.3.0
+ESP_WiFiManager v1.10.1
+ESP_MultiResetDetector v1.3.1
 FS File: /ConfigSW.json, size: 150B
 FS File: /CanadaFlag_1.png, size: 40.25KB
 FS File: /CanadaFlag_2.png, size: 8.12KB
@@ -381,7 +393,7 @@ This is terminal debug output when running [minimal](examples/minimal) on ***ESP
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 /home/kh/Arduino/libraries/LITTLEFS-master/src/lfs.c:1003:error: Corrupted dir pair at {0x0, 0x1}
 E (241) esp_littlefs: mount failed,  (-84)
 E (245) esp_littlefs: Failed to initialize LittleFS
@@ -402,7 +414,7 @@ Saving config file OK
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFE0001
 multiResetDetectorFlag = 0xFFFE0001
 lowerBytes = 0x0001, upperBytes = 0x0001
@@ -417,7 +429,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFD0002
 multiResetDetectorFlag = 0xFFFD0002
 lowerBytes = 0x0002, upperBytes = 0x0002
@@ -432,7 +444,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFC0003
 multiResetDetectorFlag = 0xFFFC0003
 lowerBytes = 0x0003, upperBytes = 0x0003
@@ -447,7 +459,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFB0004
 multiResetDetectorFlag = 0xFFFB0004
 lowerBytes = 0x0004, upperBytes = 0x0004
@@ -462,7 +474,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFA0005
 multiResetDetectorFlag = 0xFFFA0005
 lowerBytes = 0x0005, upperBytes = 0x0005
@@ -476,7 +488,7 @@ Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFB0004
 multiResetDetectorFlag = 0xFFFB0004
 lowerBytes = 0x0004, upperBytes = 0x0004
@@ -495,7 +507,7 @@ Saving config file OK
 ```
 
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFE0001
 multiResetDetectorFlag = 0xFFFE0001
 lowerBytes = 0x0001, upperBytes = 0x0001
@@ -518,7 +530,7 @@ This is terminal debug output when running [minimal](examples/minimal) on ***ESP
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 multiResetDetectorFlag = 0x00000000
 lowerBytes = 0x0000, upperBytes = 0xFFFF
 lowerBytes = 0x0000, upperBytes = 0xFFFF
@@ -533,7 +545,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFE0001
 multiResetDetectorFlag = 0xFFFE0001
 lowerBytes = 0x0001, upperBytes = 0x0001
@@ -548,7 +560,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFD0002
 multiResetDetectorFlag = 0xFFFD0002
 lowerBytes = 0x0002, upperBytes = 0x0002
@@ -563,7 +575,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFC0003
 multiResetDetectorFlag = 0xFFFC0003
 lowerBytes = 0x0003, upperBytes = 0x0003
@@ -578,7 +590,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFB0004
 multiResetDetectorFlag = 0xFFFB0004
 lowerBytes = 0x0004, upperBytes = 0x0004
@@ -592,7 +604,7 @@ Saving config file OK
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFA0005
 multiResetDetectorFlag = 0xFFFA0005
 lowerBytes = 0x0005, upperBytes = 0x0005
@@ -606,7 +618,7 @@ Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFB0004
 multiResetDetectorFlag = 0xFFFB0004
 lowerBytes = 0x0004, upperBytes = 0x0004
@@ -624,7 +636,7 @@ Saving config file OK
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.0
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFE0001
 multiResetDetectorFlag = 0xFFFE0001
 lowerBytes = 0x0001, upperBytes = 0x0001
@@ -644,8 +656,8 @@ This is terminal debug output when running [ESPAsync_WiFi](https://github.com/kh
 
 ```
 Starting ESPAsync_WiFi using LittleFS on ESP32S3_DEV
-ESPAsync_WiFiManager_Lite v1.7.0
-ESP_MultiResetDetector v1.3.0
+ESPAsync_WiFiManager_Lite v1.8.2
+ESP_MultiResetDetector v1.3.1
 LittleFS Flag read = 0xFFFC0003
 multiResetDetectorFlag = 0xFFFC0003
 lowerBytes = 0x0003, upperBytes = 0x0003
@@ -762,6 +774,7 @@ Submit issues to: [ESP_MultiResetDetector issues](https://github.com/khoih-prog/
 1. Multi Reset Detector for ESP32 (EEPROM, SPIFFS and LittleFS) and ESP8266 (RTC, EEPROM, SPIFFS and LittleFS).
 2. Add support to `ESP32_C3`, `ESP32_S2`
 3. Add support to `ESP32_S3` using ESP32 core v2.0.2+
+4. Add waitingForMRD() function to signal in MRD wating period.
 
 ---
 ---
@@ -769,10 +782,12 @@ Submit issues to: [ESP_MultiResetDetector issues](https://github.com/khoih-prog/
 ### Contributions and thanks
 
 1. Thanks to [kbssa](https://github.com/kbssa) for request enhancement in [Issue 9: Not an issue, but a question](https://github.com/khoih-prog/ESP_DoubleResetDetector/issues/9), leading to this new [ESP_MultiResetDetector Library](https://github.com/khoih-prog/ESP_MultiResetDetector)
+2. Thanks to [Tochi Moreno](https://github.com/tochimoreno) for enhancement request in [DRD is waiting for a double reset? #14](https://github.com/khoih-prog/ESP_DoubleResetDetector/discussions/14) leading to v1.3.1 to add `waitingForMRD()` function to signal in MRD wating period
 
 <table>
   <tr>
     <td align="center"><a href="https://github.com/kbssa"><img src="https://github.com/kbssa.png" width="100px;" alt="kbssa"/><br /><sub><b>kbssa</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/tochimoreno"><img src="https://github.com/tochimoreno.png" width="100px;" alt="tochimoreno"/><br /><sub><b>Tochi Moreno</b></sub></a><br /></td>
   </tr> 
 </table>
 

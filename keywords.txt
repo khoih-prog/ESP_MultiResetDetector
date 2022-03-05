@@ -13,6 +13,7 @@ MultiResetDetector
 #######################################
 
 detectMultiReset		KEYWORD2
+waitingForMRD KEYWORD2
 loop	KEYWORD2
 stop	KEYWORD2
 

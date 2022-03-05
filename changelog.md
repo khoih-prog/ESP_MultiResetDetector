@@ -13,6 +13,7 @@
 
 
 * [Changelog](#changelog)
+  * [Releases v1.3.1](#releases-v131)
   * [Releases v1.3.0](#releases-v130)
   * [Releases v1.2.1](#releases-v121)
   * [Releases v1.2.0](#releases-v120)
@@ -23,6 +24,11 @@
 ---
 
 ## Changelog
+
+### Releases v1.3.1
+
+1. Add waitingForMRD() function to signal in MRD wating period. Check [DRD is waiting for a double reset? #14](https://github.com/khoih-prog/ESP_DoubleResetDetector/discussions/14)
+2. Add example [checkWaitingMRD](https://github.com/khoih-prog/ESP_MultiResetDetector/tree/main/examples/checkWaitingMRD) to demo how to use the new feature.
 
 ### Releases v1.3.0
 
