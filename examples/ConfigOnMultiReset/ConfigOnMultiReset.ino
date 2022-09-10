@@ -101,8 +101,6 @@
   #endif
     //////
     
-    #define ESP_getChipId()   ((uint32_t)ESP.getEfuseMac())
-
 #define LED_BUILTIN       2
 #define LED_ON            HIGH
 #define LED_OFF           LOW
@@ -201,14 +199,6 @@ MultiResetDetector* mrd;//////
 
 // Onboard LED I/O pin on NodeMCU board
 const int PIN_LED = 2; // D4 on NodeMCU and WeMos. GPIO2/ADC12 of ESP32. Controls the onboard LED.
-
-// SSID and PW for Config Portal
-String ssid = "ESP_" + String(ESP_getChipId(), HEX);
-const char* password = "your_password";
-
-// SSID and PW for your Router
-String Router_SSID;
-String Router_Pass;
 
 // From v1.1.0
 // You only need to format the filesystem once
@@ -313,6 +303,15 @@ IPAddress APStaticGW  = IPAddress(192, 168, 100, 1);
 IPAddress APStaticSN  = IPAddress(255, 255, 255, 0);
 
 #include <ESP_WiFiManager.h>              //https://github.com/khoih-prog/ESP_WiFiManager
+
+// SSID and PW for Config Portal
+String ssid = "ESP_" + String(ESP_getChipId(), HEX);
+const char* password = "your_password";
+
+// SSID and PW for your Router
+String Router_SSID;
+String Router_Pass;
+
 
 // Function Prototypes
 uint8_t connectMultiWiFi(void);

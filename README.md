@@ -2,7 +2,7 @@
 
 [![arduino-library-badge](https://www.ardu-badge.com/badge/ESP_MultiResetDetector.svg?)](https://www.ardu-badge.com/ESP_MultiResetDetector)
 [![GitHub release](https://img.shields.io/github/release/khoih-prog/ESP_MultiResetDetector.svg)](https://github.com/khoih-prog/ESP_MultiResetDetector/releases)
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/khoih-prog/ESP_MultiResetDetector/blob/master/LICENSE)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/khoih-prog/ESP_MultiResetDetector/blob/main/LICENSE)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](#Contributing)
 [![GitHub issues](https://img.shields.io/github/issues/khoih-prog/ESP_MultiResetDetector.svg)](http://github.com/khoih-prog/ESP_MultiResetDetector/issues)
 
@@ -124,10 +124,9 @@ This [**ESP_MultiResetDetector** library](https://github.com/khoih-prog/ESP_Mult
 ## Prerequisites
 
 1. [`Arduino IDE 1.8.19+` for Arduino](https://github.com/arduino/Arduino). [![GitHub release](https://img.shields.io/github/release/arduino/Arduino.svg)](https://github.com/arduino/Arduino/releases/latest)
-2. [`ESP32 Core 2.0.2+`](https://github.com/espressif/arduino-esp32) for ESP32-based boards. [![Latest release](https://img.shields.io/github/release/espressif/arduino-esp32.svg)](https://github.com/espressif/arduino-esp32/releases/latest/)
+2. [`ESP32 Core 2.0.4+`](https://github.com/espressif/arduino-esp32) for ESP32-based boards. [![Latest release](https://img.shields.io/github/release/espressif/arduino-esp32.svg)](https://github.com/espressif/arduino-esp32/releases/latest/)
 3. [`ESP8266 Core 3.0.2+`](https://github.com/esp8266/Arduino) for ESP8266-based boards. [![Latest release](https://img.shields.io/github/release/esp8266/Arduino.svg)](https://github.com/esp8266/Arduino/releases/latest/). SPIFFS is deprecated from ESP8266 core 2.7.1+, to use LittleFS. 
-
-4. [`LittleFS_esp32 v1.0.6+`](https://github.com/lorol/LITTLEFS) for ESP32-based boards using LittleFS with ESP32 core v1.0.5-. To install, check [![arduino-library-badge](https://www.ardu-badge.com/badge/LittleFS_esp32.svg?)](https://www.ardu-badge.com/LittleFS_esp32). **Notice**: This [`LittleFS_esp32 library`](https://github.com/lorol/LITTLEFS) has been integrated to Arduino [ESP32 core v1.0.6+](https://github.com/espressif/arduino-esp32/tree/master/libraries/LITTLEFS) and you don't need to install it if using ESP32 core v1.0.6+
+4. [`LittleFS_esp32 v1.0.6+`](https://github.com/lorol/LITTLEFS) for ESP32-based boards using LittleFS with ESP32 core **v1.0.5-**. To install, check [![arduino-library-badge](https://www.ardu-badge.com/badge/LittleFS_esp32.svg?)](https://www.ardu-badge.com/LittleFS_esp32). **Notice**: This [`LittleFS_esp32 library`](https://github.com/lorol/LITTLEFS) has been integrated to Arduino [ESP32 core v1.0.6+](https://github.com/espressif/arduino-esp32/tree/master/libraries/LITTLEFS) and **you don't need to install it if using ESP32 core v1.0.6+**
 
 ---
 
@@ -140,9 +139,9 @@ The best and easiest way is to use `Arduino Library Manager`. Search for `ESP_Mu
 ### Manual Install
 
 1. Navigate to [ESP_MultiResetDetector](https://github.com/khoih-prog/ESP_MultiResetDetector) page.
-2. Download the latest release `ESP_MultiResetDetector-master.zip`.
-3. Extract the zip file to `ESP_MultiResetDetector-master` directory 
-4. Copy the whole `ESP_MultiResetDetector-master` folder to Arduino libraries' directory such as `~/Arduino/libraries/`.
+2. Download the latest release `ESP_MultiResetDetector-main.zip`.
+3. Extract the zip file to `ESP_MultiResetDetector-main` directory 
+4. Copy the whole `ESP_MultiResetDetector-main` folder to Arduino libraries' directory such as `~/Arduino/libraries/`.
 
 ### VS Code & PlatformIO:
 
@@ -325,8 +324,8 @@ This is terminal debug output when running [ESP32_FSWebServer_DRD](https://githu
 
 ```cpp
 Starting ESP32_FSWebServer_DRD with DoubleResetDetect using SPIFFS on ESP32_DEV
-ESP_WiFiManager v1.10.1
-ESP_MultiResetDetector v1.3.1
+ESP_WiFiManager v1.11.0
+ESP_MultiResetDetector v1.3.2
 FS File: /ConfigSW.json, size: 150B
 FS File: /CanadaFlag_1.png, size: 40.25KB
 FS File: /CanadaFlag_2.png, size: 8.12KB
@@ -393,7 +392,7 @@ This is terminal debug output when running [minimal](examples/minimal) on ***ESP
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 /home/kh/Arduino/libraries/LITTLEFS-master/src/lfs.c:1003:error: Corrupted dir pair at {0x0, 0x1}
 E (241) esp_littlefs: mount failed,  (-84)
 E (245) esp_littlefs: Failed to initialize LittleFS
@@ -414,7 +413,7 @@ Saving config file OK
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFE0001
 multiResetDetectorFlag = 0xFFFE0001
 lowerBytes = 0x0001, upperBytes = 0x0001
@@ -429,7 +428,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFD0002
 multiResetDetectorFlag = 0xFFFD0002
 lowerBytes = 0x0002, upperBytes = 0x0002
@@ -444,7 +443,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFC0003
 multiResetDetectorFlag = 0xFFFC0003
 lowerBytes = 0x0003, upperBytes = 0x0003
@@ -459,7 +458,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFB0004
 multiResetDetectorFlag = 0xFFFB0004
 lowerBytes = 0x0004, upperBytes = 0x0004
@@ -474,7 +473,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFA0005
 multiResetDetectorFlag = 0xFFFA0005
 lowerBytes = 0x0005, upperBytes = 0x0005
@@ -488,7 +487,7 @@ Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFB0004
 multiResetDetectorFlag = 0xFFFB0004
 lowerBytes = 0x0004, upperBytes = 0x0004
@@ -507,7 +506,7 @@ Saving config file OK
 ```
 
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFE0001
 multiResetDetectorFlag = 0xFFFE0001
 lowerBytes = 0x0001, upperBytes = 0x0001
@@ -530,7 +529,7 @@ This is terminal debug output when running [minimal](examples/minimal) on ***ESP
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 multiResetDetectorFlag = 0x00000000
 lowerBytes = 0x0000, upperBytes = 0xFFFF
 lowerBytes = 0x0000, upperBytes = 0xFFFF
@@ -545,7 +544,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFE0001
 multiResetDetectorFlag = 0xFFFE0001
 lowerBytes = 0x0001, upperBytes = 0x0001
@@ -560,7 +559,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFD0002
 multiResetDetectorFlag = 0xFFFD0002
 lowerBytes = 0x0002, upperBytes = 0x0002
@@ -575,7 +574,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFC0003
 multiResetDetectorFlag = 0xFFFC0003
 lowerBytes = 0x0003, upperBytes = 0x0003
@@ -590,7 +589,7 @@ No Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFB0004
 multiResetDetectorFlag = 0xFFFB0004
 lowerBytes = 0x0004, upperBytes = 0x0004
@@ -604,7 +603,7 @@ Saving config file OK
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFA0005
 multiResetDetectorFlag = 0xFFFA0005
 lowerBytes = 0x0005, upperBytes = 0x0005
@@ -618,7 +617,7 @@ Multi Reset Detected
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFB0004
 multiResetDetectorFlag = 0xFFFB0004
 lowerBytes = 0x0004, upperBytes = 0x0004
@@ -636,7 +635,7 @@ Saving config file OK
 
 ```
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
-ESP_MultiResetDetector v1.3.1
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFE0001
 multiResetDetectorFlag = 0xFFFE0001
 lowerBytes = 0x0001, upperBytes = 0x0001
@@ -656,8 +655,8 @@ This is terminal debug output when running [ESPAsync_WiFi](https://github.com/kh
 
 ```
 Starting ESPAsync_WiFi using LittleFS on ESP32S3_DEV
-ESPAsync_WiFiManager_Lite v1.8.2
-ESP_MultiResetDetector v1.3.1
+ESPAsync_WiFiManager_Lite v1.9.0
+ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFC0003
 multiResetDetectorFlag = 0xFFFC0003
 lowerBytes = 0x0003, upperBytes = 0x0003
@@ -775,6 +774,8 @@ Submit issues to: [ESP_MultiResetDetector issues](https://github.com/khoih-prog/
 2. Add support to `ESP32_C3`, `ESP32_S2`
 3. Add support to `ESP32_S3` using ESP32 core v2.0.2+
 4. Add waitingForMRD() function to signal in MRD wating period.
+6. Fix ESP32 chipID for example`ConfigOnMultiReset`
+7. Remove dependency on `LittleFS_esp32` library to prevent PIO error when using new ESP32 core v1.0.6+
 
 ---
 ---
@@ -805,7 +806,7 @@ If you want to contribute to this project:
 
 ### License
 
-- The library is licensed under [MIT](https://github.com/khoih-prog/ESP_MultiResetDetector/blob/master/LICENSE)
+- The library is licensed under [MIT](https://github.com/khoih-prog/ESP_MultiResetDetector/blob/main/LICENSE)
 
 ---
 

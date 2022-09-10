@@ -2,7 +2,7 @@
 
 [![arduino-library-badge](https://www.ardu-badge.com/badge/ESP_MultiResetDetector.svg?)](https://www.ardu-badge.com/ESP_MultiResetDetector)
 [![GitHub release](https://img.shields.io/github/release/khoih-prog/ESP_MultiResetDetector.svg)](https://github.com/khoih-prog/ESP_MultiResetDetector/releases)
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/khoih-prog/ESP_MultiResetDetector/blob/master/LICENSE)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/khoih-prog/ESP_MultiResetDetector/blob/main/LICENSE)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](#Contributing)
 [![GitHub issues](https://img.shields.io/github/issues/khoih-prog/ESP_MultiResetDetector.svg)](http://github.com/khoih-prog/ESP_MultiResetDetector/issues)
 
@@ -13,6 +13,7 @@
 
 
 * [Changelog](#changelog)
+  * [Releases v1.3.2](#releases-v132)
   * [Releases v1.3.1](#releases-v131)
   * [Releases v1.3.0](#releases-v130)
   * [Releases v1.2.1](#releases-v121)
@@ -24,6 +25,11 @@
 ---
 
 ## Changelog
+
+### Releases v1.3.2
+
+1. Fix ESP32 chipID for example `ConfigOnMultiReset`
+2. Remove dependency on `LittleFS_esp32` library to prevent PIO error when using new ESP32 core v1.0.6+
 
 ### Releases v1.3.1
 

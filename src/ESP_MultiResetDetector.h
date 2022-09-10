@@ -11,7 +11,7 @@
 
   Built by Khoi Hoang https://github.com/khoih-prog/ESP_MultiResetDetector
   Licensed under MIT license
-  Version: 1.3.1
+  Version: 1.3.2
 
   Version Modified By   Date      Comments
   ------- -----------  ---------- -----------
@@ -21,6 +21,7 @@
   1.2.1   K Hoang      26/11/2021 Fix compile error for ESP32 core v1.0.5-
   1.3.0   K Hoang      10/02/2022 Add support to new ESP32-S3
   1.3.1   K Hoang      04/03/2022 Add waitingForMRD() function to signal in MRD wating period
+  1.3.2   K Hoang      09/09/2022 Fix ESP32 chipID for example ConfigOnMultiReset
 *****************************************************************************************************************************/
 
 #pragma once
@@ -39,13 +40,13 @@
 #endif
 
 #ifndef ESP_MULTI_RESET_DETECTOR_VERSION
-  #define ESP_MULTI_RESET_DETECTOR_VERSION             "ESP_MultiResetDetector v1.3.1"
+  #define ESP_MULTI_RESET_DETECTOR_VERSION             "ESP_MultiResetDetector v1.3.2"
   
   #define ESP_MULTI_RESET_DETECTOR_VERSION_MAJOR       1
   #define ESP_MULTI_RESET_DETECTOR_VERSION_MINOR       3
-  #define ESP_MULTI_RESET_DETECTOR_VERSION_PATCH       1
+  #define ESP_MULTI_RESET_DETECTOR_VERSION_PATCH       2
 
-  #define ESP_MULTI_RESET_DETECTOR_VERSION_INT         1003001
+  #define ESP_MULTI_RESET_DETECTOR_VERSION_INT         1003002
 #endif
 
 #define ESP_MULTIRESETDETECTOR_VERSION         ESP_MULTI_RESET_DETECTOR_VERSION
