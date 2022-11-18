@@ -773,7 +773,7 @@ Submit issues to: [ESP_MultiResetDetector issues](https://github.com/khoih-prog/
 1. Multi Reset Detector for ESP32 (EEPROM, SPIFFS and LittleFS) and ESP8266 (RTC, EEPROM, SPIFFS and LittleFS).
 2. Add support to `ESP32_C3`, `ESP32_S2`
 3. Add support to `ESP32_S3` using ESP32 core v2.0.2+
-4. Add waitingForMRD() function to signal in MRD wating period.
+4. Add waitingForMRD() function to signal in MRD waiting period.
 6. Fix ESP32 chipID for example`ConfigOnMultiReset`
 7. Remove dependency on `LittleFS_esp32` library to prevent PIO error when using new ESP32 core v1.0.6+
 
@@ -783,7 +783,7 @@ Submit issues to: [ESP_MultiResetDetector issues](https://github.com/khoih-prog/
 ### Contributions and thanks
 
 1. Thanks to [kbssa](https://github.com/kbssa) for request enhancement in [Issue 9: Not an issue, but a question](https://github.com/khoih-prog/ESP_DoubleResetDetector/issues/9), leading to this new [ESP_MultiResetDetector Library](https://github.com/khoih-prog/ESP_MultiResetDetector)
-2. Thanks to [Tochi Moreno](https://github.com/tochimoreno) for enhancement request in [DRD is waiting for a double reset? #14](https://github.com/khoih-prog/ESP_DoubleResetDetector/discussions/14) leading to v1.3.1 to add `waitingForMRD()` function to signal in MRD wating period
+2. Thanks to [Tochi Moreno](https://github.com/tochimoreno) for enhancement request in [DRD is waiting for a double reset? #14](https://github.com/khoih-prog/ESP_DoubleResetDetector/discussions/14) leading to v1.3.1 to add `waitingForMRD()` function to signal in MRD waiting period
 
 <table>
   <tr>
