@@ -1,4 +1,4 @@
-## ESP_MultiResetDetector
+## ESP_MultiResetDetector Library
 
 [![arduino-library-badge](https://www.ardu-badge.com/badge/ESP_MultiResetDetector.svg?)](https://www.ardu-badge.com/ESP_MultiResetDetector)
 [![GitHub release](https://img.shields.io/github/release/khoih-prog/ESP_MultiResetDetector.svg)](https://github.com/khoih-prog/ESP_MultiResetDetector/releases)
@@ -9,6 +9,8 @@
 
 <a href="https://www.buymeacoffee.com/khoihprog6" title="Donate to my libraries using BuyMeACoffee"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Donate to my libraries using BuyMeACoffee" style="height: 50px !important;width: 181px !important;" ></a>
 <a href="https://www.buymeacoffee.com/khoihprog6" title="Donate to my libraries using BuyMeACoffee"><img src="https://img.shields.io/badge/buy%20me%20a%20coffee-donate-orange.svg?logo=buy-me-a-coffee&logoColor=FFDD00" style="height: 20px !important;width: 200px !important;" ></a>
+<a href="https://profile-counter.glitch.me/khoih-prog/count.svg" title="Total khoih-prog Visitor count"><img src="https://profile-counter.glitch.me/khoih-prog/count.svg" style="height: 30px;width: 200px;"></a>
+<a href="https://profile-counter.glitch.me/khoih-prog-ESP_MultiResetDetector/count.svg" title="ESP_MultiResetDetector Visitor count"><img src="https://profile-counter.glitch.me/khoih-prog-ESP_MultiResetDetector/count.svg" style="height: 30px;width: 200px;"></a>
 
 ---
 ---
@@ -124,10 +126,11 @@ This [**ESP_MultiResetDetector** library](https://github.com/khoih-prog/ESP_Mult
 ## Prerequisites
 
 1. [`Arduino IDE 1.8.19+` for Arduino](https://github.com/arduino/Arduino). [![GitHub release](https://img.shields.io/github/release/arduino/Arduino.svg)](https://github.com/arduino/Arduino/releases/latest)
-2. [`ESP32 Core 2.0.4+`](https://github.com/espressif/arduino-esp32) for ESP32-based boards. [![Latest release](https://img.shields.io/github/release/espressif/arduino-esp32.svg)](https://github.com/espressif/arduino-esp32/releases/latest/)
+2. [`ESP32 Core 2.0.5+`](https://github.com/espressif/arduino-esp32) for ESP32-based boards. [![Latest release](https://img.shields.io/github/release/espressif/arduino-esp32.svg)](https://github.com/espressif/arduino-esp32/releases/latest/)
 3. [`ESP8266 Core 3.0.2+`](https://github.com/esp8266/Arduino) for ESP8266-based boards. [![Latest release](https://img.shields.io/github/release/esp8266/Arduino.svg)](https://github.com/esp8266/Arduino/releases/latest/). SPIFFS is deprecated from ESP8266 core 2.7.1+, to use LittleFS. 
 4. [`LittleFS_esp32 v1.0.6+`](https://github.com/lorol/LITTLEFS) for ESP32-based boards using LittleFS with ESP32 core **v1.0.5-**. To install, check [![arduino-library-badge](https://www.ardu-badge.com/badge/LittleFS_esp32.svg?)](https://www.ardu-badge.com/LittleFS_esp32). **Notice**: This [`LittleFS_esp32 library`](https://github.com/lorol/LITTLEFS) has been integrated to Arduino [ESP32 core v1.0.6+](https://github.com/espressif/arduino-esp32/tree/master/libraries/LITTLEFS) and **you don't need to install it if using ESP32 core v1.0.6+**
 
+---
 ---
 
 ## Installation
@@ -324,7 +327,7 @@ This is terminal debug output when running [ESP32_FSWebServer_DRD](https://githu
 
 ```cpp
 Starting ESP32_FSWebServer_DRD with DoubleResetDetect using SPIFFS on ESP32_DEV
-ESP_WiFiManager v1.11.0
+ESP_WiFiManager v1.12.1
 ESP_MultiResetDetector v1.3.2
 FS File: /ConfigSW.json, size: 150B
 FS File: /CanadaFlag_1.png, size: 40.25KB
@@ -390,7 +393,7 @@ This is terminal debug output when running [minimal](examples/minimal) on ***ESP
 
 #### 2.1 Data Corrupted => reset to 0
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
 ESP_MultiResetDetector v1.3.2
 /home/kh/Arduino/libraries/LITTLEFS-master/src/lfs.c:1003:error: Corrupted dir pair at {0x0, 0x1}
@@ -411,7 +414,7 @@ Saving config file OK
 
 #### 2.2 Reset Detected => Reporting 1
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFE0001
@@ -426,7 +429,7 @@ No Multi Reset Detected
 
 #### 2.3 Reset Detected => Reporting 2
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFD0002
@@ -441,7 +444,7 @@ No Multi Reset Detected
 
 #### 2.4 Reset Detected => Reporting 3
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFC0003
@@ -456,7 +459,7 @@ No Multi Reset Detected
 
 #### 2.5 Reset Detected => Reporting 4
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFB0004
@@ -471,7 +474,7 @@ No Multi Reset Detected
 
 #### 2.6 Reset Detected => Reporting 5. Multi Reset Detected
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFA0005
@@ -485,7 +488,7 @@ Multi Reset Detected
 
 #### 2.7 Timed out => reset to 1
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFB0004
@@ -503,7 +506,7 @@ Saving config file OK
 
 #### 2.8 Reset Detected => Reporting 1
 
-```
+```cpp
 
 Starting ESP_MultiResetDetector minimal on ESP32_DEV using LittleFS
 ESP_MultiResetDetector v1.3.2
@@ -527,7 +530,7 @@ This is terminal debug output when running [minimal](examples/minimal) on ***ESP
 
 #### 3.1 Data Corrupted => reset to 0
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
 ESP_MultiResetDetector v1.3.2
 multiResetDetectorFlag = 0x00000000
@@ -542,7 +545,7 @@ No Multi Reset Detected
 
 #### 3.2 Reset Detected => Reporting 1
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFE0001
@@ -557,7 +560,7 @@ No Multi Reset Detected
 
 #### 3.3 Reset Detected => Reporting 2
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFD0002
@@ -572,7 +575,7 @@ No Multi Reset Detected
 
 #### 3.4 Reset Detected => Reporting 3
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFC0003
@@ -587,7 +590,7 @@ No Multi Reset Detected
 
 #### 3.5 Reset Detected => Reporting 4
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFB0004
@@ -601,7 +604,7 @@ Saving config file OK
 
 #### 3.6 Reset Detected => Reporting 5. Multi Reset Detected
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFA0005
@@ -615,7 +618,7 @@ Multi Reset Detected
 
 #### 3.7 Timed out => reset to 1
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFB0004
@@ -633,7 +636,7 @@ Saving config file OK
 
 #### 3.8 Reset Detected => Reporting 1
 
-```
+```cpp
 Starting ESP_MultiResetDetector minimal on ESP8266_NODEMCU using LittleFS
 ESP_MultiResetDetector v1.3.2
 LittleFS Flag read = 0xFFFE0001
@@ -653,7 +656,7 @@ No Multi Reset Detected
 This is terminal debug output when running [ESPAsync_WiFi](https://github.com/khoih-prog/ESPAsync_WiFiManager_Lite/tree/main/examples/ESPAsync_WiFi) on  ***ESP32 ESP32S3_DEV.***. Config Portal was requested by MRD to input and save Credentials.
 
 
-```
+```cpp
 Starting ESPAsync_WiFi using LittleFS on ESP32S3_DEV
 ESPAsync_WiFiManager_Lite v1.9.0
 ESP_MultiResetDetector v1.3.2
@@ -776,6 +779,8 @@ Submit issues to: [ESP_MultiResetDetector issues](https://github.com/khoih-prog/
 4. Add waitingForMRD() function to signal in MRD waiting period.
 6. Fix ESP32 chipID for example`ConfigOnMultiReset`
 7. Remove dependency on `LittleFS_esp32` library to prevent PIO error when using new ESP32 core v1.0.6+
+8. Add astyle using `allman` style. Restyle the library
+
 
 ---
 ---
@@ -812,5 +817,5 @@ If you want to contribute to this project:
 
 ### Copyright
 
-Copyright 2020- Khoi Hoang
+Copyright (c) 2020- Khoi Hoang
 

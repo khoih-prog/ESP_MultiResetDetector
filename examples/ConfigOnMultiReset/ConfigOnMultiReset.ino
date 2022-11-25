@@ -1,21 +1,21 @@
 /****************************************************************************************************************************
   ConfigOnMultiReset.ino
   For ESP8266 / ESP32 boards
-  
+
   ESP_MultiResetDetector is a library for the ESP8266/Arduino platform
   to enable trigger configure mode by resetting ESP32 / ESP8266 multiple times.
-  
+
   Based on and modified from
   1) DataCute    https://github.com/datacute/MultiResetDetector
   2) Khoi Hoang  https://github.com/khoih-prog/ESP_MultiResetDetector
-  
+
   Built by Khoi Hoang https://github.com/khoih-prog/ESP_MultiResetDetector
   Licensed under MIT license
  *****************************************************************************************************************************/
 /****************************************************************************************************************************
   This example will open a configuration portal when the reset button is pressed twice.
   This method works well on Wemos boards which have a single reset button on board. It avoids using a pin for launching the configuration portal.
-  
+
   How It Works
   1) ESP8266
   Save data in RTC memory, EPPROM, LittleFS or SPIFFS
@@ -23,25 +23,25 @@
   Save data in
   a) EEPROM from address 256, size 512 bytes (both configurable)
   b) SPIFFS
-  
+
   For LittleFS or SPIFFS, file name is "/mrd.dat"
-  
+
   So when the device starts up it checks this region of ram for a flag to see if it has been recently reset.
   If so it launches a configuration portal, if not it sets the reset flag. After running for a while this flag is cleared so that
   it will only launch the configuration portal in response to closely spaced resets.
-  
+
   Settings
   There are values to be set in the sketch.
   MRD_TIMES   - Number of subsequent resets during MRD_TIMEOUT to activate
   MRD_TIMEOUT - Number of seconds to wait for the second reset. Set to 10 in the example.
   MRD_ADDRESS - The address in ESP8266 RTC RAM/EEPROM address to store the flag. Must not be used in the same sketch
-  
+
   This example, originally relied on the Double Reset Detector library from https://github.com/datacute/DoubleResetDetector
   To support ESP32, use ESP_MultiResetDetector library from //https://github.com/khoih-prog/ESP_MultiResetDetector
  *****************************************************************************************************************************/
 
 #if !( defined(ESP8266) ||  defined(ESP32) )
-#error This code is intended to run on the ESP8266 or ESP32 platform! Please check your Tools->Board setting.
+  #error This code is intended to run on the ESP8266 or ESP32 platform! Please check your Tools->Board setting.
 #endif
 
 // Use from 0 to 4. Higher number, more debugging messages and memory usage.
@@ -54,7 +54,7 @@
   #include <esp_wifi.h>
   #include <WiFi.h>
   #include <WiFiClient.h>
-  
+
   // From v1.1.0
   #include <WiFiMulti.h>
   WiFiMulti wifiMulti;
@@ -73,7 +73,7 @@
       #warning Using ESP32 Core 1.0.6 or 2.0.0+
       // The library has been merged into esp32 core from release 1.0.6
       #include <LittleFS.h>
-      
+
       FS* filesystem =      &LittleFS;
       #define FileFS        LittleFS
       #define FS_Name       "LittleFS"
@@ -81,12 +81,12 @@
       #warning Using ESP32 Core 1.0.5-. You must install LITTLEFS library
       // The library has been merged into esp32 core from release 1.0.6
       #include <LITTLEFS.h>             // https://github.com/lorol/LITTLEFS
-      
+
       FS* filesystem =      &LITTLEFS;
       #define FileFS        LITTLEFS
       #define FS_Name       "LittleFS"
     #endif
-    
+
   #elif USE_SPIFFS
     #include <SPIFFS.h>
     FS* filesystem =      &SPIFFS;
@@ -99,24 +99,24 @@
     #define FileFS        FFat
     #define FS_Name       "FFat"
   #endif
-    //////
-    
-#define LED_BUILTIN       2
-#define LED_ON            HIGH
-#define LED_OFF           LOW
+  //////
+
+  #define LED_BUILTIN       2
+  #define LED_ON            HIGH
+  #define LED_OFF           LOW
 
 #else
   #include <ESP8266WiFi.h>          //https://github.com/esp8266/Arduino
   //needed for library
   #include <DNSServer.h>
   #include <ESP8266WebServer.h>
-  
+
   // From v1.1.0
   #include <ESP8266WiFiMulti.h>
   ESP8266WiFiMulti wifiMulti;
-  
+
   #define USE_LITTLEFS      true
-  
+
   #if USE_LITTLEFS
     #include <LittleFS.h>
     FS* filesystem =      &LittleFS;
@@ -128,9 +128,9 @@
     #define FS_Name       "SPIFFS"
   #endif
   //////
-  
+
   #define ESP_getChipId()   (ESP.getChipId())
-  
+
   #define LED_ON      LOW
   #define LED_OFF     HIGH
 #endif
@@ -174,7 +174,7 @@
     #define ESP_MRD_USE_LITTLEFS    false
     #define ESP_MRD_USE_SPIFFS      true
   #endif
-  
+
   #define ESP_MRD_USE_EEPROM      false
   #define ESP8266_MRD_USE_RTC     false
 #endif
@@ -262,34 +262,34 @@ bool initialConfig = false;
 
 // Use USE_DHCP_IP == true for dynamic DHCP IP, false to use static IP which you have to change accordingly to your network
 #if (defined(USE_STATIC_IP_CONFIG_IN_CP) && !USE_STATIC_IP_CONFIG_IN_CP)
-// Force DHCP to be true
-#if defined(USE_DHCP_IP)
-#undef USE_DHCP_IP
-#endif
-#define USE_DHCP_IP     true
+  // Force DHCP to be true
+  #if defined(USE_DHCP_IP)
+    #undef USE_DHCP_IP
+  #endif
+  #define USE_DHCP_IP     true
 #else
-// You can select DHCP or Static IP here
-#define USE_DHCP_IP     true
-//#define USE_DHCP_IP     false
+  // You can select DHCP or Static IP here
+  #define USE_DHCP_IP     true
+  //#define USE_DHCP_IP     false
 #endif
 
 #if ( USE_DHCP_IP || ( defined(USE_STATIC_IP_CONFIG_IN_CP) && !USE_STATIC_IP_CONFIG_IN_CP ) )
-// Use DHCP
-#warning Using DHCP IP
-IPAddress stationIP   = IPAddress(0, 0, 0, 0);
-IPAddress gatewayIP   = IPAddress(192, 168, 2, 1);
-IPAddress netMask     = IPAddress(255, 255, 255, 0);
+  // Use DHCP
+  #warning Using DHCP IP
+  IPAddress stationIP   = IPAddress(0, 0, 0, 0);
+  IPAddress gatewayIP   = IPAddress(192, 168, 2, 1);
+  IPAddress netMask     = IPAddress(255, 255, 255, 0);
 #else
-// Use static IP
-#warning Using static IP
-#ifdef ESP32
-IPAddress stationIP   = IPAddress(192, 168, 2, 232);
-#else
-IPAddress stationIP   = IPAddress(192, 168, 2, 186);
-#endif
+  // Use static IP
+  #warning Using static IP
+  #ifdef ESP32
+    IPAddress stationIP   = IPAddress(192, 168, 2, 232);
+  #else
+    IPAddress stationIP   = IPAddress(192, 168, 2, 186);
+  #endif
 
-IPAddress gatewayIP   = IPAddress(192, 168, 2, 1);
-IPAddress netMask     = IPAddress(255, 255, 255, 0);
+  IPAddress gatewayIP   = IPAddress(192, 168, 2, 1);
+  IPAddress netMask     = IPAddress(255, 255, 255, 0);
 #endif
 
 #define USE_CONFIGURABLE_DNS      true
@@ -319,25 +319,25 @@ uint8_t connectMultiWiFi(void);
 ///////////////////////////////////////////
 // New in v1.4.0
 /******************************************
- * // Defined in ESP_WiFiManager.h
-typedef struct
-{
+   // Defined in ESP_WiFiManager.h
+  typedef struct
+  {
   IPAddress _ap_static_ip;
   IPAddress _ap_static_gw;
   IPAddress _ap_static_sn;
 
-}  WiFi_AP_IPConfig;
+  }  WiFi_AP_IPConfig;
 
-typedef struct
-{
+  typedef struct
+  {
   IPAddress _sta_static_ip;
   IPAddress _sta_static_gw;
   IPAddress _sta_static_sn;
-#if USE_CONFIGURABLE_DNS  
+  #if USE_CONFIGURABLE_DNS
   IPAddress _sta_static_dns1;
   IPAddress _sta_static_dns2;
-#endif
-}  WiFi_STA_IPConfig;
+  #endif
+  }  WiFi_STA_IPConfig;
 ******************************************/
 
 WiFi_AP_IPConfig  WM_AP_IPconfig;
@@ -355,7 +355,7 @@ void initSTAIPConfigStruct(WiFi_STA_IPConfig &in_WM_STA_IPconfig)
   in_WM_STA_IPconfig._sta_static_ip   = stationIP;
   in_WM_STA_IPconfig._sta_static_gw   = gatewayIP;
   in_WM_STA_IPconfig._sta_static_sn   = netMask;
-#if USE_CONFIGURABLE_DNS  
+#if USE_CONFIGURABLE_DNS
   in_WM_STA_IPconfig._sta_static_dns1 = dns1IP;
   in_WM_STA_IPconfig._sta_static_dns2 = dns2IP;
 #endif
@@ -372,13 +372,14 @@ void displayIPConfigStruct(WiFi_STA_IPConfig in_WM_STA_IPconfig)
 
 void configWiFi(WiFi_STA_IPConfig in_WM_STA_IPconfig)
 {
-  #if USE_CONFIGURABLE_DNS  
-    // Set static IP, Gateway, Subnetmask, DNS1 and DNS2. New in v1.0.5
-    WiFi.config(in_WM_STA_IPconfig._sta_static_ip, in_WM_STA_IPconfig._sta_static_gw, in_WM_STA_IPconfig._sta_static_sn, in_WM_STA_IPconfig._sta_static_dns1, in_WM_STA_IPconfig._sta_static_dns2);  
-  #else
-    // Set static IP, Gateway, Subnetmask, Use auto DNS1 and DNS2.
-    WiFi.config(in_WM_STA_IPconfig._sta_static_ip, in_WM_STA_IPconfig._sta_static_gw, in_WM_STA_IPconfig._sta_static_sn);
-  #endif 
+#if USE_CONFIGURABLE_DNS
+  // Set static IP, Gateway, Subnetmask, DNS1 and DNS2. New in v1.0.5
+  WiFi.config(in_WM_STA_IPconfig._sta_static_ip, in_WM_STA_IPconfig._sta_static_gw, in_WM_STA_IPconfig._sta_static_sn,
+              in_WM_STA_IPconfig._sta_static_dns1, in_WM_STA_IPconfig._sta_static_dns2);
+#else
+  // Set static IP, Gateway, Subnetmask, Use auto DNS1 and DNS2.
+  WiFi.config(in_WM_STA_IPconfig._sta_static_ip, in_WM_STA_IPconfig._sta_static_gw, in_WM_STA_IPconfig._sta_static_sn);
+#endif
 }
 
 ///////////////////////////////////////////
@@ -387,18 +388,18 @@ uint8_t connectMultiWiFi()
 {
 #if ESP32
   // For ESP32, this better be 0 to shorten the connect time
-  #define WIFI_MULTI_1ST_CONNECT_WAITING_MS       0
+#define WIFI_MULTI_1ST_CONNECT_WAITING_MS       0
 #else
   // For ESP8266, this better be 2200 to enable connect the 1st time
-  #define WIFI_MULTI_1ST_CONNECT_WAITING_MS       2200L
+#define WIFI_MULTI_1ST_CONNECT_WAITING_MS       2200L
 #endif
 
 #define WIFI_MULTI_CONNECT_WAITING_MS           100L
-  
+
   uint8_t status;
 
   LOGERROR(F("ConnectMultiWiFi with :"));
-  
+
   if ( (Router_SSID != "") && (Router_Pass != "") )
   {
     LOGERROR3(F("* Flash-stored Router_SSID = "), Router_SSID, F(", Router_Pass = "), Router_Pass );
@@ -407,12 +408,13 @@ uint8_t connectMultiWiFi()
   for (uint8_t i = 0; i < NUM_WIFI_CREDENTIALS; i++)
   {
     // Don't permit NULL SSID and password len < MIN_AP_PASSWORD_SIZE (8)
-    if ( (String(WM_config.WiFi_Creds[i].wifi_ssid) != "") && (strlen(WM_config.WiFi_Creds[i].wifi_pw) >= MIN_AP_PASSWORD_SIZE) )
+    if ( (String(WM_config.WiFi_Creds[i].wifi_ssid) != "")
+         && (strlen(WM_config.WiFi_Creds[i].wifi_pw) >= MIN_AP_PASSWORD_SIZE) )
     {
       LOGERROR3(F("* Additional SSID = "), WM_config.WiFi_Creds[i].wifi_ssid, F(", PW = "), WM_config.WiFi_Creds[i].wifi_pw );
     }
   }
-  
+
   LOGERROR(F("Connecting MultiWifi..."));
 
   WiFi.mode(WIFI_STA);
@@ -515,7 +517,7 @@ void loadConfigData()
   // New in v1.4.0
   memset(&WM_STA_IPconfig, 0, sizeof(WM_STA_IPconfig));
   //////
-    
+
   if (file)
   {
     file.readBytes((char *) &WM_config,   sizeof(WM_config));
@@ -523,7 +525,7 @@ void loadConfigData()
     // New in v1.4.0
     file.readBytes((char *) &WM_STA_IPconfig, sizeof(WM_STA_IPconfig));
     //////
-    
+
     file.close();
     LOGERROR(F("OK"));
 
@@ -536,7 +538,7 @@ void loadConfigData()
     LOGERROR(F("failed"));
   }
 }
-    
+
 void saveConfigData()
 {
   File file = FileFS.open(CONFIG_FILENAME, "w");
@@ -549,7 +551,7 @@ void saveConfigData()
     // New in v1.4.0
     file.write((uint8_t*) &WM_STA_IPconfig, sizeof(WM_STA_IPconfig));
     //////
-    
+
     file.close();
     LOGERROR(F("OK"));
   }
@@ -566,6 +568,7 @@ void setup()
   pinMode(PIN_LED, OUTPUT);
 
   Serial.begin(115200);
+
   while (!Serial);
 
   delay(200);
@@ -582,6 +585,7 @@ void setup()
 
   // Format FileFS if not yet
 #ifdef ESP32
+
   if (!FileFS.begin(true))
 #else
   if (!FileFS.begin())
@@ -622,16 +626,16 @@ void setup()
   ESP_wifiManager.setConfigPortalChannel(0);
   //////
 
-#if !USE_DHCP_IP    
-    // Set (static IP, Gateway, Subnetmask, DNS1 and DNS2) or (IP, Gateway, Subnetmask). New in v1.0.5
-    // New in v1.4.0
-    ESP_wifiManager.setSTAStaticIPConfig(WM_STA_IPconfig);
-    //////
+#if !USE_DHCP_IP
+  // Set (static IP, Gateway, Subnetmask, DNS1 and DNS2) or (IP, Gateway, Subnetmask). New in v1.0.5
+  // New in v1.4.0
+  ESP_wifiManager.setSTAStaticIPConfig(WM_STA_IPconfig);
+  //////
 #endif
 
   // New from v1.1.1
 #if USING_CORS_FEATURE
-  ESP_wifiManager.setCORSHeader("Your Access-Control-Allow-Origin");  
+  ESP_wifiManager.setCORSHeader("Your Access-Control-Allow-Origin");
 #endif
 
   // We can't use WiFi.SSID() in ESP32 as it's only valid after connected.
@@ -707,7 +711,8 @@ void setup()
         strncpy(WM_config.WiFi_Creds[i].wifi_pw, tempPW.c_str(), sizeof(WM_config.WiFi_Creds[i].wifi_pw) - 1);
 
       // Don't permit NULL SSID and password len < MIN_AP_PASSWORD_SIZE (8)
-      if ( (String(WM_config.WiFi_Creds[i].wifi_ssid) != "") && (strlen(WM_config.WiFi_Creds[i].wifi_pw) >= MIN_AP_PASSWORD_SIZE) )
+      if ( (String(WM_config.WiFi_Creds[i].wifi_ssid) != "")
+           && (strlen(WM_config.WiFi_Creds[i].wifi_pw) >= MIN_AP_PASSWORD_SIZE) )
       {
         LOGERROR3(F("* Add SSID = "), WM_config.WiFi_Creds[i].wifi_ssid, F(", PW = "), WM_config.WiFi_Creds[i].wifi_pw );
         wifiMulti.addAP(WM_config.WiFi_Creds[i].wifi_ssid, WM_config.WiFi_Creds[i].wifi_pw);
@@ -718,7 +723,7 @@ void setup()
     ESP_wifiManager.getSTAStaticIPConfig(WM_STA_IPconfig);
     displayIPConfigStruct(WM_STA_IPconfig);
     //////
-    
+
     saveConfigData();
   }
 
@@ -734,7 +739,8 @@ void setup()
     for (uint8_t i = 0; i < NUM_WIFI_CREDENTIALS; i++)
     {
       // Don't permit NULL SSID and password len < MIN_AP_PASSWORD_SIZE (8)
-      if ( (String(WM_config.WiFi_Creds[i].wifi_ssid) != "") && (strlen(WM_config.WiFi_Creds[i].wifi_pw) >= MIN_AP_PASSWORD_SIZE) )
+      if ( (String(WM_config.WiFi_Creds[i].wifi_ssid) != "")
+           && (strlen(WM_config.WiFi_Creds[i].wifi_pw) >= MIN_AP_PASSWORD_SIZE) )
       {
         LOGERROR3(F("* Add SSID = "), WM_config.WiFi_Creds[i].wifi_ssid, F(", PW = "), WM_config.WiFi_Creds[i].wifi_pw );
         wifiMulti.addAP(WM_config.WiFi_Creds[i].wifi_ssid, WM_config.WiFi_Creds[i].wifi_pw);

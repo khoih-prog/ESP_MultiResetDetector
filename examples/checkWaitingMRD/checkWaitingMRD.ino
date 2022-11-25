@@ -1,14 +1,14 @@
 /****************************************************************************************************************************
   checkWaitingMRD.ino
   For ESP8266 / ESP32 boards
-  
+
   ESP_MultiResetDetector is a library for the ESP8266/Arduino platform
   to enable trigger configure mode by resetting ESP32 / ESP8266 multiple times.
-  
+
   Based on and modified from
   1) DataCute    https://github.com/datacute/MultiResetDetector
   2) Khoi Hoang  https://github.com/khoih-prog/ESP_MultiResetDetector
-  
+
   Built by Khoi Hoang https://github.com/khoih-prog/ESP_MultiResetDetector
   Licensed under MIT license
  *****************************************************************************************************************************/
@@ -39,7 +39,7 @@
 // Number of subsequent resets during MRD_TIMEOUT to activate
 #define MRD_TIMES               3
 
-// Number of seconds after reset during which a 
+// Number of seconds after reset during which a
 // subsequent reset will be considered a multi reset.
 #define MRD_TIMEOUT             10
 
@@ -89,13 +89,13 @@ void check_status()
     {
       digitalWrite(LED_BUILTIN, LEDState);
 
-      LEDState = !LEDState;    
+      LEDState = !LEDState;
     }
     else
     {
       digitalWrite(LED_BUILTIN, LED_OFF);
     }
-    
+
     checkstatus_timeout = current_millis + MRD_CHECK_INTERVAL;
   }
 }
@@ -103,13 +103,15 @@ void check_status()
 void setup()
 {
   pinMode(LED_BUILTIN, OUTPUT);
-  
+
   Serial.begin(115200);
+
   while (!Serial);
 
   delay(200);
 
-  Serial.print("\nStarting checkWaitingMRD on"); Serial.println(ARDUINO_BOARD);
+  Serial.print("\nStarting checkWaitingMRD on");
+  Serial.println(ARDUINO_BOARD);
 
 #if ESP_MRD_USE_LITTLEFS
   Serial.println(F(" using LittleFS"));
@@ -118,18 +120,18 @@ void setup()
 #else
   Serial.println(F(" using EEPROM"));
 #endif
-  
+
   Serial.println(ESP_MULTI_RESET_DETECTOR_VERSION);
-   
+
   mrd = new MultiResetDetector(MRD_TIMEOUT, MRD_ADDRESS);
 
-  if (mrd->detectMultiReset()) 
+  if (mrd->detectMultiReset())
   {
     Serial.println("Multi Reset Detected");
     digitalWrite(LED_BUILTIN, LED_ON);
     MRD_Detected = true;
-  } 
-  else 
+  }
+  else
   {
     Serial.println("No Multi Reset Detected");
     digitalWrite(LED_BUILTIN, LED_OFF);
