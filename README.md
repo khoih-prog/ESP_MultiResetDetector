@@ -313,7 +313,7 @@ and there are many more.
 
 ### Example [checkWaitingMRD](examples/checkWaitingMRD)
 
-https://github.com/khoih-prog/ESP_MultiResetDetector/blob/390a11e842b689ab3277dc42c617344416aaa559/examples/checkWaitingMRD/checkWaitingMRD.ino#L22-L148
+https://github.com/khoih-prog/ESP_MultiResetDetector/blob/c878d5e4df520f5b1be0f42e74be3462e4d87ac0/examples/checkWaitingMRD/checkWaitingMRD.ino#L16-L150
 
 
 ---
